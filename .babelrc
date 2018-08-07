@@ -1,3 +1,6 @@
 {
-  "plugins": ["dva-hmr"]
+  "plugins": ["dva-hmr"],
+  "presets": [
+    "es2015"
+  ]
 }
