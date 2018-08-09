@@ -1,14 +1,18 @@
+import {loadBaiduCoords} from './baiduQuery'
 export default async function loadPosition (dispatch) {
     try {
       const position = await getCurrentPosition();
       const { latitude, longitude } = position.coords;
-      const currentLocation={
+      var currentLocation={
         lng:longitude,
         lat: latitude,
       }
-      console.log('position loaded')
+      const convertedLocation = await generateBaiduCoords(currentLocation)
+      // console.log(convertedLocation)
+      currentLocation.lat = convertedLocation.x
+      currentLocation.lng = convertedLocation.y
       dispatch({
-        type:'mapData/updateCurrentLocation',
+        type:'mapData/save',
         payload:{
           currentLocation:currentLocation,                                                                                                                   
           startLocation:currentLocation
@@ -18,8 +22,12 @@ export default async function loadPosition (dispatch) {
       console.log(error);
     }
   };
-  
-  function getCurrentPosition (options = {}) {
+  async function generateBaiduCoords(payload) {
+    const returned_coords = await loadBaiduCoords(payload)
+    // console.log(returned_coords)
+    return returned_coords
+  }
+  async function getCurrentPosition (options = {}) {
     return new Promise((resolve, reject) => {
       navigator.geolocation.getCurrentPosition(resolve, reject, options);
     });

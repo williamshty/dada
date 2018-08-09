@@ -14,29 +14,32 @@ class MapComponent extends React.Component {
     }
   }
   async loadSearchedLocation (param) {
-    loadPosition(this.props.mapData.dispatch)
+    loadPosition(this.props.dispatch)
     const result = await searchLocation(param)
     console.log(result)
   }
 
   componentDidMount() {
     // this.loadSearchedLocation.bind(this)('牛市口')
-    loadPosition(this.props.mapData.dispatch)
-    console.log(this.props.mapData)
+    loadPosition(this.props.dispatch)
+    // console.log(this.props.mapData)
     // this.props.mapData.dispatch({type:'navigator/toggleOrderGeneration'})
+  }
+  componentDidUpdate(){
+    // loadPosition(this.props.dispatch)
   }
   render(){
     return (
       <Map 
       style={{height: '100%'}} 
-      center={this.state.currentLocation} 
+      center={this.props.mapData.currentLocation} 
       zoom="12"
       mapStyle={{styleJson: this.state.mapJSON}}>
       {/* add json format style in above [] */}
        {(()=>{
          if(this.props.mapData.trafficActivated) return(<TrafficLayer/>)    
        })()}
-       <Marker position={this.state.currentLocation}/>
+       <Marker position={this.props.mapData.currentLocation}/>
        {/* {(()=>{
         if(this.props.navigator.orderGenerationTriggered && this.props.mapData.startLocation) return(
           <Marker position={this.props.mapData.startLocation}/>
