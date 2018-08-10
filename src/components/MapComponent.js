@@ -22,6 +22,7 @@ class MapComponent extends React.Component {
   componentDidMount() {
     // this.loadSearchedLocation.bind(this)('牛市口')
     loadPosition(this.props.dispatch)
+    // Map.centerAndZoom()
     // console.log(this.props.mapData)
     // this.props.mapData.dispatch({type:'navigator/toggleOrderGeneration'})
   }

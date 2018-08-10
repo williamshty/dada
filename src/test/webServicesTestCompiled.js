@@ -1,21 +1,31 @@
-'use strict';
+"use strict";
 
-var _webServices = require('../services/webServices');
+var _webServices = require("../services/webServices");
 
-var _baiduQuery = require('../services/baiduQuery');
+var _baiduQuery = require("../services/baiduQuery");
 
 async function generateOrderFunction(payload) {
-    var orderGenerated = await (0, _webServices.generateOrder)(payload);
-    console.log(orderGenerated);
+  var orderGenerated = await (0, _webServices.generateOrder)(payload);
+  console.log(orderGenerated);
 }
 async function getLoginVerificationCodeFunction(payload) {
-    var verification_code = await (0, _webServices.getLoginVerificationCode)(payload);
-    console.log(verification_code.data.data.user);
+  var verification_code = await (0, _webServices.getLoginVerificationCode)(payload);
+  console.log(verification_code);
 }
 async function generateBaiduCoords(payload) {
-    var returned_coords = await (0, _baiduQuery.loadBaiduCoords)(payload);
-    console.log(returned_coords);
+  var returned_coords = await (0, _baiduQuery.loadBaiduCoords)(payload);
+  console.log(returned_coords);
 }
+async function registerUserByPhoneNum(payload) {
+  var registrationStatus = await (0, _webServices.registerNewUser)(payload);
+  console.log(registrationStatus);
+}
+
+registerUserByPhoneNum({
+  user: {
+    phoneNum: 13840243280
+  }
+});
 
 // passed
 // generateBaiduCoords({
@@ -23,29 +33,31 @@ async function generateBaiduCoords(payload) {
 //     lng:104.06756279999999
 // })
 
-
 // passed
-getLoginVerificationCodeFunction('13840243280');
+// getLoginVerificationCodeFunction('13840243280')
 // passed
 // generateOrderFunction({
-//     ride:{
-//         passenger: '5b52dd00b8703c0f37bb118f',
-//         location:{
-//             from:{
-//                 title:'ABC',
-//                 info:'abc',
-//                 lng: 112.34,
-//                 lat: 114.98
-//             },
-//             to:{
-//                 title:'tap4fun',
-//                 info:'abc',
-//                 lng: 34.87,
-//                 lat: 35.98
-//             }
-//         },
-//         time:{
-//             order:Date.now()
-//         }
-//     }
-// })
+//   ride: {
+//     passenger: "5b52dd00b8703c0f37bb118f",
+//     location: {
+//       from: {
+//         title: "ABC",
+//         info: "abc",
+//         lng: 112.34,
+//         lat: 30.8
+//       },
+//       to: {
+//         title: "tap4fun",
+//         info: "abc",
+//         lng: 104.25,
+//         lat: 30.12
+//       }
+//     },
+//     time: {
+//       order: Date.now()
+//     },
+//     pax: 2,
+//     distance: 3.4,
+//     price: 2.08
+//   }
+// });

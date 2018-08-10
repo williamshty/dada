@@ -282,7 +282,7 @@ class OrderGeneration extends React.Component {
                             费用
                         </div>
                         <div className={styles.bottom__price__number}>
-                            12.60&nbsp;
+                            {(this.state.estimatedPrice/12).toFixed(2)}&nbsp;
                         <span className={styles.bottom__price__unit}>NAS</span>
                         </div>
                         <div className={styles.bottom__time__text}>
