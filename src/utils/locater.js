@@ -24,8 +24,8 @@ export default async function loadPosition (dispatch) {
   };
   async function generateBaiduCoords(payload) {
     const returned_coords = await loadBaiduCoords(payload)
-    // console.log(returned_coords)
-    return returned_coords
+    console.log(returned_coords)
+    return returned_coords.result[0]
   }
   async function getCurrentPosition (options = {}) {
     return new Promise((resolve, reject) => {

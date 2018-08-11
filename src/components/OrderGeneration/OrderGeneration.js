@@ -44,18 +44,20 @@ class OrderGeneration extends React.Component {
     }
     async loadLocationByCoordinate(coordinate) {
         const result = await searchLocationByCoordinate(coordinate)
+        console.log(result)
         this.props.dispatch({
             type: 'mapData/save',
             payload: {
-                startLocationDescription: result
+                startLocationDescription: result.result.formatted_address
             }
         })
-        this.setState({ start: result })
-        console.log(result)
+        this.setState({ start: result.result.formatted_address })
+        
     }
     async loadEstimatedRoute() {
-        const result = await getEstimatedRoute(this.props.mapData.startLocation, this.props.mapData.endLocation)
-        console.log(result)
+        var result = await getEstimatedRoute(this.props.mapData.startLocation, this.props.mapData.endLocation)
+        console.log(result.route)
+        result = result.route
         this.setState({
             estimatedDistance: (result.paths[0].distance / 1000).toFixed(1),
             estimatedTime: Math.floor(result.paths[0].duration / 60) + 1,
@@ -71,8 +73,8 @@ class OrderGeneration extends React.Component {
     }
     async loadSearchedLocation(param) {
         const result = await searchLocation(param)
-        // console.log(result)
-        this.setState({ locationHintList: result })
+        console.log(result)
+        this.setState({ locationHintList: result.results })
     }
     onStartChange = (value) => {
         this.setState({ start: value });
