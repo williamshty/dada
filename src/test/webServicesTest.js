@@ -36,28 +36,29 @@ registerUserByPhoneNum({
 // passed
 // getLoginVerificationCodeFunction('13840243280')
 // passed
-// generateOrderFunction({
-//   ride: {
-//     passenger: "5b6d9d5af971e43547fe1a38",
-//     location: {
-//       from: {
-//         title: "ABC",
-//         info: "abc",
-//         lng: 112.34,
-//         lat: 30.8
-//       },
-//       to: {
-//         title: "tap4fun",
-//         info: "abc",
-//         lng: 104.25,
-//         lat: 30.12
-//       }
-//     },
-//     time: {
-//       order: Date.now()
-//     },
-//     pax: 2,
-//     distance: 3.4,
-//     price: 2.08
-//   }
-// });
+generateOrderFunction({
+  ride: {
+    passenger: "5b6d9d5af971e43547fe1a38",
+    location: {
+      from: {
+        title: "ABC",
+        info: "abc",
+        lng: 112.34,
+        lat: 30.8
+      },
+      to: {
+        title: "tap4fun",
+        info: "abc",
+        lng: 104.25,
+        lat: 30.12
+      }
+    },
+    time: {
+      order: Date.now()
+    },
+    pax: 2,
+    distance: 3.4,
+    price: 2.08,
+    duration:'34 Min'
+  }
+});

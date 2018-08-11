@@ -77,7 +77,6 @@ class SideMenu extends React.Component {
         <Drawer
           className="my-drawer"
           style={{ minHeight: document.documentElement.clientHeight, fontSize: 10 }}
-          enableDragHandle
           contentStyle={{ color: '#A6A6A6', textAlign: 'center' }}
           sidebar={sidebar}
           open={this.state.sideMenuOpen}

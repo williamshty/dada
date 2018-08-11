@@ -4,10 +4,10 @@ export default {
     namespace: 'trip',
   
     state: {
-        start:'',
-        end: '',
-        length:'',
-        price:''
+        pax:'',
+        distance:'',
+        price:'',
+        duration:''
     },
   
     subscriptions: {

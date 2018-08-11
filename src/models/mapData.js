@@ -8,7 +8,9 @@ export default {
         startLocation:'',
         endLocation:'',
         startLocationDescription:'',
-        endLocationDescription:''
+        endLocationDescription:'',
+        startLocationInfo:'',
+        endLocationInfo:''
     },
   
     subscriptions: {
