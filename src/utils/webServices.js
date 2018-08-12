@@ -24,3 +24,15 @@ export async function generateOrder(payload){
     return resp
 }
 
+export async function cancelOrderBeforeTaken(payload){
+    let resp = await axios.put('/ride/cancel/6',payload)
+    return resp
+}
+export async function cancelOrderAfterTaken(payload){
+    let resp = await axios.put('/ride/cancel/7',payload)
+    return resp
+}
+export async function confirmTripEnd(payload){
+    let resp = await axios.put('/ride/confirm',payload)
+    return resp
+}

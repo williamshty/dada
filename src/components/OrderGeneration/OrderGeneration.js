@@ -21,19 +21,19 @@ class OrderGeneration extends React.Component {
     super(props);
     this.state = {
       currentLocation: this.props.mapData.currentLocation,
-      start: "",
-      end: "",
+      start: this.props.mapData.startLocationDescription,
+      end: this.props.mapData.endLocationDescription,
       locationHintList: [],
       selectedStartLocation: this.props.mapData.startLocation,
       startLocationActivated: false,
-      selectedEndLocation: "",
+      selectedEndLocation: this.props.mapData.endLocation,
       endLocationActivated: false,
       estimatedDistance: 0,
       estimatedTime: 0,
       estimatedPrice: 0,
       routeShouldUpdate: true,
       riderNumber: 0,
-      paxSelected: 0
+      paxSelected: this.props.trip.pax
     };
   }
   componentDidMount() {
@@ -48,7 +48,13 @@ class OrderGeneration extends React.Component {
   componentDidUpdate() {}
   async generateOrderFunction(payload) {
     const orderGenerated = await generateOrder(payload);
-    console.log(orderGenerated);
+    console.log(orderGenerated.data.data._id);
+    this.props.dispatch({
+      type:'trip/save',
+      payload:{
+        currentTripID:orderGenerated.data.data._id
+      }
+    })
   }
   async loadLocationByCoordinate(coordinate) {
     const result = await searchLocationByCoordinate(coordinate);
@@ -142,16 +148,8 @@ class OrderGeneration extends React.Component {
             <img width={8} src={require("../../assets/backArrow.png")} />
           </div>
           <div className={styles.start__search__container}>
-            {/* <SearchBar
-                placeholder="起点"
-                maxLength={8}
-                showCancelButton
-                onChange={this.onStartChange}
-                onSubmit={(value)=>{this.onSubmitStart(value)}}
-                value={this.state.start}
-                cancelText=" "/> */}
             <SearchItem
-              placeholder="牛市口"
+              placeholder=""
               iconColor="#1ad371"
               value={this.state.start}
               onChange={this.onStartChange}
@@ -164,7 +162,7 @@ class OrderGeneration extends React.Component {
           </div>
           <div className={styles.end__search__container}>
             <SearchItem
-              placeholder="尼比鲁"
+              placeholder=""
               iconColor="#ff0000"
               value={this.state.end}
               onChange={this.onEndChange}
@@ -174,14 +172,6 @@ class OrderGeneration extends React.Component {
                 }
               }}
             />
-            {/* <SearchBar
-                placeholder="终点"
-                maxLength={8}
-                showCancelButton
-                onChange={this.onEndChange}
-                onSubmit={(value)=>{this.onSubmitEnd(value)}}
-                value={this.state.end}
-                cancelText=" "/> */}
           </div>
 
           {(() => {

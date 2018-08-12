@@ -67,19 +67,19 @@ class DriverFound extends React.Component {
                   车辆品牌
                   </div>
                   <div className={styles.bottom__brand}>
-                  大众
+                  {this.props.trip.driverInfo.model}
                   </div>
                   <div className={styles.bottom__color__title}>
                   车辆颜色
                   </div>
                   <div className={styles.bottom__color}>
-                  紫色
+                  {this.props.trip.driverInfo.color}
                   </div>
                   <div className={styles.bottom__license__title}>
                   车牌号
                   </div>
                   <div className={styles.bottom__license}>
-                  川A · 5CW77
+                  {this.props.trip.driverInfo.plateNum}
                   </div>
                 </div>
               </div>

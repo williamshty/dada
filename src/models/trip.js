@@ -7,7 +7,10 @@ export default {
         pax:'',
         distance:'',
         price:'',
-        duration:''
+        duration:'',
+        driverInfo:{},
+        currentTripID:{},
+        finishedTrip:{}
     },
   
     subscriptions: {

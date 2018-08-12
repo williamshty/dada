@@ -5,6 +5,7 @@ export default {
     state: {
         currentLocation:'here',
         trafficActivated: false,
+        currentDriverLocation:{},
         startLocation:'',
         endLocation:'',
         startLocationDescription:'',
