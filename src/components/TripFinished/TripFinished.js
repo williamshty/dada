@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'dva';
-import styles from './TripFinished.css'
+import styles from './TripFinished.css';
+import {rateTrip} from '../../utils/webServices'
 class TripFinished extends React.Component {
   constructor(props) {
     super(props);
@@ -19,18 +20,29 @@ class TripFinished extends React.Component {
       }
       if(this.state.starViewed&&!this.state.starRated){
         setTimeout(()=>this.setState({starRated:true}),1000)
-        // setTimeout(()=>{this.props.dispatch({
-        //     type:'navigator/save',
-        //     payload:{
-        //         returnInitialStateTriggered:true,
-        //         tripFinishedTriggered:false
-        //     }
-        //   })}, 2000)
+      }
+      if(this.state.starViewed&&this.state.starRated){
+        setTimeout(()=>{
+            this.props.dispatch({
+                type:'navigator/save',
+                payload:{
+                    returnInitialStateTriggered:true,
+                    tripFinishedTriggered:false
+                }
+            })
+        },2000) 
       }
   }
   componentWillUnmount(){
   }
-  
+  async rateTripFunction(stars) {
+      const star_rated = await rateTrip({
+          review: stars,
+          _id:this.props.trip.currentTripID,
+          time:Date.now()
+      })
+      console.log(star_rated)
+  }
   render(){
     return (
       <div>
@@ -51,7 +63,7 @@ class TripFinished extends React.Component {
                             <div key={value}
                             onClick={()=>{
                                 this.setState({activatedStars:value},()=>{
-                                    
+                                    this.rateTripFunction(value)
                                 })
                             }} 
                             className={this.state.activatedStars>=value?styles.star__activated:styles.star__deactive}>

@@ -36,3 +36,7 @@ export async function confirmTripEnd(payload){
     let resp = await axios.put('/ride/confirm',payload)
     return resp
 }
+export async function rateTrip(payload){
+    let resp = await axios.put('/ride/review',payload)
+    return resp
+}
