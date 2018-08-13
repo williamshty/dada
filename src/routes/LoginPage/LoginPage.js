@@ -97,7 +97,7 @@ class LoginPage extends React.Component {
               验证登录
             </div>
             <div className={styles.login__hint__text}>
-            为确保该手机为本人登陆，请输入验证码
+            为确保账户为本人登录，请输入验证码
             </div>
             {/* <div className={styles.tel__container}>
                 <InputItem
@@ -151,7 +151,6 @@ class LoginPage extends React.Component {
       )
     }
 }
-
 LoginPage.propTypes = {
 };
 
