@@ -24,6 +24,18 @@ class TripFinished extends React.Component {
       if(this.state.starViewed&&this.state.starRated){
         setTimeout(()=>{
             this.props.dispatch({
+                type:'mapData/save',
+                payload:{
+                    trafficActivated: false,
+                    currentDriverLocation:{},
+                    endLocation:'',
+                    startLocationDescription:'',
+                    endLocationDescription:'',
+                    startLocationInfo:'',
+                    endLocationInfo:''
+                }
+            })
+            this.props.dispatch({
                 type:'navigator/save',
                 payload:{
                     returnInitialStateTriggered:true,

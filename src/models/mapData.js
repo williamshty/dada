@@ -32,9 +32,6 @@ export default {
       save(state, action) {
         return { ...state, ...action.payload };
       },
-      // toggleSideMenu(state){
-      //     return{sideMenuOpen:!state.sideMenuOpen};
-      // }
       updateCurrentLocation(state, action){
           return { ...state, ...action.payload };
       },
