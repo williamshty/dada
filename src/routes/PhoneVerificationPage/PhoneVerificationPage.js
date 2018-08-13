@@ -93,7 +93,7 @@ class PhoneVerificationPage extends React.Component {
               登录
             </div>
             <div className={styles.login__hint__text}>
-            搭搭拼车需要您登陆才能对您进行服务
+            搭搭拼车需要登录后才能为您服务
             </div>
             {/* <div className={styles.tel__container}>
                 <InputItem

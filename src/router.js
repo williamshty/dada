@@ -5,7 +5,7 @@ import LoginPage from './routes/LoginPage/LoginPage';
 import RegistrationPage from './routes/RegistrationPage/RegistrationPage'
 import PhoneVerificationPage from './routes/PhoneVerificationPage/PhoneVerificationPage'
 import HistoryPage from './routes/HistoryPage/HistoryPage'
-
+import RootRegistrationPage from './routes/RootRegistrationPage/RootRegistrationPage'
 
 function RouterConfig({ history }) {
   return (
@@ -16,6 +16,7 @@ function RouterConfig({ history }) {
         <Route path="/register" component={RegistrationPage} />
         <Route path="/verification" component={PhoneVerificationPage} />
         <Route path="/history" component={HistoryPage} />
+        <Route path="/registration" component={RootRegistrationPage} />
       </Switch>
     </Router>
   );

@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'dva';
-import styles from './RegistartionPage.css';
+import styles from './RegistrationPage.css';
 import InputItem from '../../components/Forms/InputItem';
 import {getRegistrationVerificationCode, registerNewUser} from '../../utils/webServices'
 import {routerRedux} from 'dva/router'

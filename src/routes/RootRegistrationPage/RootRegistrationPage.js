@@ -1,13 +1,10 @@
 import React from 'react';
 import { connect } from 'dva';
-import styles from './LoginPage.css';
-import InputItem from '../../components/Forms/InputItem'
-import {routerRedux} from 'dva/router';
-import {getLoginVerificationCode} from '../../utils/webServices'
-import SearchItem from '../../components/Forms/SearchItem'
-import SearchListItem from '../../components/SearchListItem/SearchListItem'
-import CustomModal from '../../components/Modals/CustomModal'
-class LoginPage extends React.Component {
+import styles from './RootRegistrationPage.css';
+import InputItem from '../../components/Forms/InputItem';
+import {getRegistrationVerificationCode, registerNewUser} from '../../utils/webServices'
+import {routerRedux} from 'dva/router'
+class RootRegistrationPage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -17,8 +14,7 @@ class LoginPage extends React.Component {
         phoneError:'',
         verificationSent:false,
         verificationError:'',
-        countDownTime:60,
-        phoneNotRegistered:false
+        countDownTime:60
     }
   }
   componentDidUpdate(){
@@ -33,27 +29,18 @@ class LoginPage extends React.Component {
       })
     }
   }
-  async loadLoginVerificationCode(){
+  async getRegistrationVerificationCode(){
       if(this.state.tel.toString().length!==11) {
           this.setState({phoneError:'true'})
           return
         }
-    const verification_code = await getLoginVerificationCode(this.state.tel)
-    console.log(verification_code)
-    if(verification_code.data.code!==1001&&verification_code.data.code!==1002){
+    const verification_code = await getRegistrationVerificationCode(this.state.tel)
+    if(verification_code.data.code!==1001){
       this.setState({phoneError:'true'})
           return
-    } else if(verification_code.data.code===1002){
-      this.setState({
-        phoneError:'true',
-        phoneNotRegistered:true
-      })
-          return
-    }
-    else{
+    }else{
       this.setState({
         verificationSent:true,
-        phoneNotRegistered:false,
         receivedVerification:verification_code.data.data.code
       })
       this.triggerCountDownTimer()
@@ -68,21 +55,24 @@ class LoginPage extends React.Component {
   triggerClearInterval(){
     clearInterval(this.interval)
   }
-  submitLoginForm(){
+  submitRegistrationForm(){
     
-    if(this.state.enteredVerification!==this.state.receivedVerification||this.state.enteredVerification===''){
+    if(this.state.enteredVerification!==this.state.receivedVerification){
       this.setState({verificationError:'true'})
       return
     } else{
-      this.props.dispatch({
-        type:'navigator/save',
-        payload:{
-          isLoggedIn:true
-        }
-      })
-      localStorage.setItem('isLoggedIn',true)
-      this.props.dispatch(routerRedux.push({pathname:'/'}))
+      this.registerUserByPhoneNum.bind(this)()
     }
+  }
+  async registerUserByPhoneNum(){
+    console.log(parseInt(this.state.tel))
+    const payload = {
+      user:{
+        phoneNum:parseInt(this.state.tel)
+      }
+    }
+   const registrationStatus = await registerNewUser(payload) 
+   console.log(registrationStatus)
   }
   componentDidMount(){
     // console.log(this.props)
@@ -90,36 +80,35 @@ class LoginPage extends React.Component {
     render(){
       return (
         <div className={styles.base__container}>
-        <div className={styles.status__bar__filler}></div>
             <div className={styles.back__button}></div>
-            <div className={styles.login__icon}></div>
-            <div className={styles.login__text}>
-              验证登录
+            <div className={styles.registration__icon}></div>
+            <div className={styles.registration__text}>
+            注册
             </div>
-            <div className={styles.login__hint__text}>
-            为确保该手机为本人登陆，请输入验证码
+            <div className={styles.registration__hint__text}>
+            手机号将作为您的登录账号
             </div>
-            {/* <div className={styles.tel__container}>
+            <div className={styles.tel__container}>
                 <InputItem
-                error={this.state.phoneError}
                 caption='手机号'
                 placeholder=''
                 value={this.state.tel}
-                onChange={(v)=>{this.setState({tel:v})}}/>
-            </div> */}
+                onChange={(v)=>{this.setState({tel:v})}}
+                error={this.state.phoneError}
+                />
+            </div>
             <div className={styles.verification__container}>
                 <InputItem
                 error={this.state.verificationError}
                 caption='验证码'
                 placeholder=''
-                value={this.state.verificationEntered}
+                value={this.state.enteredVerification}
                 onChange={(v)=>{this.setState({enteredVerification:v})}}/>
             </div>
-
             {(()=>{
               if(!this.state.verificationSent){return(
                 <div className={styles.verification__button} 
-                onClick={this.loadLoginVerificationCode.bind(this)}>
+                onClick={this.getRegistrationVerificationCode.bind(this)}>
                   发送验证码
                 </div>
               )}
@@ -128,22 +117,31 @@ class LoginPage extends React.Component {
                   {this.state.countDownTime}s
                 </div>
               )
+            
             })()}
+            
             {(()=>{
-            if(this.state.verificationError==='true'){return (
-                <div>
-                <div className={styles.error__icon}>
+              if(this.state.phoneError==='true') {
+                return (
+                <div className={styles.error__text}>
+                手机号格式错误
                 </div>
+              )}
+              else if(this.state.verificationError==='true'){return (
                 <div className={styles.error__text}>
                   验证码输入错误
-                </div>`
                 </div>
               )}
             })()}
-
-            <div className={styles.submit__botton} onClick={()=>this.submitLoginForm()}>
-           登录
+            
+            <div className={styles.submit__botton} onClick={()=>this.submitRegistrationForm()}>
+            注册
             </div>
+            {/* <div className={styles.login__text} onClick={()=>{
+              this.props.dispatch(routerRedux.push({pathname:'/login'}))
+              }}>
+            返回登录
+            </div> */}
             <div className={styles.logo__container}>
             </div>
        </div>
@@ -152,7 +150,7 @@ class LoginPage extends React.Component {
     }
 }
 
-LoginPage.propTypes = {
+RootRegistrationPage.propTypes = {
 };
 
 
@@ -160,4 +158,4 @@ function mapStateToProps(state) {
   return state
 }
 
-export default connect(mapStateToProps)(LoginPage);
+export default connect(mapStateToProps)(RootRegistrationPage);
