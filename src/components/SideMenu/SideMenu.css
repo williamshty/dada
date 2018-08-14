@@ -173,6 +173,15 @@ to {top:0px;}
     font-size: 13px;
     font-weight: 400;
 }
+.driver__text:active{
+    padding-left: 58.5px;
+    margin-left: 0px;
+    margin-top: 35.5px;
+    padding-top: 15.5px;
+    width: 232px;
+    height: 31px;
+    background-color: rgba(0, 0, 0,0.15);
+}
 .history__icon{
     margin-left: 27.5px;
     margin-top: 96px;
@@ -189,9 +198,43 @@ to {top:0px;}
     font-size: 13px;
     font-weight: 400;
 }
+.history__text:active{
+    padding-left: 58.5px;
+    margin-left: 0px;
+    margin-top: 80.5px;
+    padding-top: 15.5px;
+    width: 232px;
+    height: 31px;
+    background-color: rgba(0, 0, 0,0.15);
+}
+.wallet__icon{
+    margin-left: 27.5px;
+    margin-top: 141px;
+    position: absolute;
+    background-image: url('../../assets/side_wallet.png');
+    background-size: contain;
+    width: 13px;
+    height: 13px;
+}
+.wallet__text{
+    position: absolute;
+    margin-left: 58.5px;
+    margin-top: 141px;
+    font-size: 13px;
+    font-weight: 400;
+}
+.wallet__text:active{
+    padding-left: 58.5px;
+    margin-left: 0px;
+    margin-top: 125.5px;
+    padding-top: 15.5px;
+    width: 232px;
+    height: 31px;
+    background-color: rgba(0, 0, 0,0.15);
+}
 .privacy__icon{
     margin-left: 27.5px;
-    margin-top: 141.5px;
+    margin-top: 186px;
     position: absolute;
     background-image: url('../../assets/side_privacy.png');
     background-size: contain;
@@ -201,13 +244,22 @@ to {top:0px;}
 .privacy__text{
     position: absolute;
     margin-left: 58.5px;
-    margin-top: 141px;
+    margin-top: 186px;
     font-size: 13px;
     font-weight: 400;
 }
+.privacy__text:active{
+    padding-left: 58.5px;
+    margin-left: 0px;
+    margin-top: 170.5px;
+    padding-top: 15.5px;
+    width: 232px;
+    height: 31px;
+    background-color: rgba(0, 0, 0,0.15);
+}
 .about__icon{
     margin-left: 27.5px;
-    margin-top: 186.5px;
+    margin-top: 231px;
     position: absolute;
     background: url('../../assets/side_about.png') no-repeat;
     background-size: contain;
@@ -217,13 +269,22 @@ to {top:0px;}
 .about__text{
     position: absolute;
     margin-left: 58.5px;
-    margin-top: 186px;
+    margin-top: 231px;
     font-size: 13px;
     font-weight: 400;
 }
+.about__text:active{
+    padding-left: 58.5px;
+    margin-left: 0px;
+    margin-top: 215.5px;
+    padding-top: 15.5px;
+    width: 232px;
+    height: 31px;
+    background-color: rgba(0, 0, 0,0.15);
+}
 .exit__icon{
     margin-left: 27.5px;
-    margin-top: 249.5px;
+    margin-top: 294.5px;
     position: absolute;
     background: url('../../assets/side_exit.png') no-repeat;
     background-size: contain;
@@ -233,9 +294,18 @@ to {top:0px;}
 .exit__text{
     position: absolute;
     margin-left: 58.5px;
-    margin-top: 249.5px;
+    margin-top: 294.5px;
     font-size: 13px;
     font-weight: 400;
+}
+.exit__text:active{
+    padding-left: 58.5px;
+    margin-left: 0px;
+    margin-top: 279px;
+    padding-top: 15.5px;
+    width: 232px;
+    height: 31px;
+    background-color: rgba(0, 0, 0,0.15);
 }
 .side__avatar{
     position: absolute;

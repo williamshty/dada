@@ -1,7 +1,7 @@
 {
     "start_url": "/",
-    "name": "搭搭拼车",
-    "short_name": "DADA",
+    "name": "搭搭拼车-乘客客户端",
+    "short_name": "搭搭拼车",
     "display": "standalone",
     "background_color": "#000000",
     "theme_color": "#7b4397",

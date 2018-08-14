@@ -18,9 +18,9 @@
     border-radius: 5px;
     background-color: #fff;
     /* border:1px solid #2774e8; */
-    box-shadow: 0px 0px 16px 0px rgba(39, 116, 232, 0.5);
+    box-shadow: 0px 0px 16px 0px rgba(255, 168, 51, 0.5);
     font-size: 14px;
-    color: #2774e8
+    /* color: #ffa833 */
 }
 
 .input__error{
@@ -33,7 +33,7 @@
     /* border:1px solid #e24526; */
     box-shadow: 0px 0px 8px 0px rgba(242, 17, 45, 0.5);
     font-size: 14px;
-    color:#f2112d;
+    /* color:#f2112d; */
 }
 
 .input__caption{
@@ -55,7 +55,7 @@
 
 .input__field__normal{
     position: absolute;
-    margin-left: 86.5px;
+    margin-left: 96.5px;
     margin-top: 21px;
     padding: 0;
     border-width: 0;

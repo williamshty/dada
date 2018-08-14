@@ -81,6 +81,7 @@ class IndexPage extends React.Component {
   render() {
     return (
       <div className={styles.normal}>
+      <div className={styles.top__mask} />
         <div className={styles.bottom__mask} />
         {(() => {
           if (this.props.navigator.returnInitialStateTriggered) {

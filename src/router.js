@@ -6,7 +6,8 @@ import RegistrationPage from './routes/RegistrationPage/RegistrationPage'
 import PhoneVerificationPage from './routes/PhoneVerificationPage/PhoneVerificationPage'
 import HistoryPage from './routes/HistoryPage/HistoryPage'
 import RootRegistrationPage from './routes/RootRegistrationPage/RootRegistrationPage'
-
+import WalletGenerationPage from './routes/WalletGenerationPage/WalletGenerationPage'
+import WalletDisplayPage from './routes/WalletDisplayPage/WalletDisplayPage'
 function RouterConfig({ history }) {
   return (
     <Router history={history}>
@@ -17,6 +18,8 @@ function RouterConfig({ history }) {
         <Route path="/verification" component={PhoneVerificationPage} />
         <Route path="/history" component={HistoryPage} />
         <Route path="/registration" component={RootRegistrationPage} />
+        <Route path="/generate" component={WalletGenerationPage} />
+        <Route path="/display" component={WalletDisplayPage} />
       </Switch>
     </Router>
   );

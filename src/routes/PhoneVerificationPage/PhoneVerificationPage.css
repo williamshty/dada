@@ -79,6 +79,9 @@
     text-align: center;
     font-weight: 100 !important; 
 }
+.submit__botton:active{
+    background-image: linear-gradient(to right, #f29d23 0,#ed7819 100%);
+}
 .registration__text{
     /* background-color: red; */
     position: absolute;

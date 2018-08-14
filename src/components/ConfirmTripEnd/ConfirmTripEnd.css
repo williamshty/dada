@@ -173,3 +173,6 @@
     padding-top: 14px;
     padding-left: 37px;
 }
+.button__confirm:active{
+    background-image: linear-gradient(to right, #f29d23 0,#ed7819 100%);
+}

@@ -1,0 +1,20 @@
+.toast__background{
+    position: absolute;
+    background-color: rgba(0,0,0,0.4);
+    width: 244px;
+    height: 44px;
+    border-radius: 5px;
+    margin-top: 507px;
+    margin-left: 65.5px;
+    z-index: 6000;
+}
+.toast__text{
+    position: absolute;
+    color: #fff;
+    width: 244px;
+    text-align: center;
+    font-size: 16px;
+    font-family: 'PingFang-SC-Bold';
+    padding-top: 13px;
+    /* transform: translate(-50%,50%) */
+}

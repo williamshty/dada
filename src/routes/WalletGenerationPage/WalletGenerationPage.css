@@ -1,23 +1,10 @@
 .base__container{
     width:100%;
-    /* margin-top: -20px; */
-    /* height: 687px; */
     height: 100%;
     position: absolute;
     background-color: #f2f2f2;
-    /* background-color: #fff; */
-    /* background-color: #000; */
-}
-.status__bar__filler{
-    width: 100%;
-    height: 20px;
-    position: absolute;
-    margin-top: 0px;
-    z-index: 3000;
-    /* background-color: #fff; */
-}
-
-.back__button{
+  }
+  .back__button{
     position: absolute;
     margin-left: 18px;
     margin-top: 32px;
@@ -25,11 +12,10 @@
     height: 15px;
     background: url('../../assets/backArrow.png');
     background-size: contain;
-
+  
     /* background-color: #000; */
-}
-
-.login__text{
+  }
+  .wallet__text{
     /* background-color: red; */
     position: absolute;
     margin-left: 72.5px;
@@ -37,26 +23,45 @@
     color:#333;
     font-size: 24px;
     font-weight: 600;
-}
-.login__hint__text{
+  }
+  
+  .wallet__icon{
+    position: absolute;
+      margin-left: 27.5px;
+      margin-top: 79px;
+      width: 31px;
+      height: 31px;
+      /* background-color: #000; */
+      background: url('../../assets/wallet_generation.png') no-repeat;
+      background-size: contain;
+  }
+  
+  .wallet__hint__text{
     margin-left: 29.5px;
-    margin-top: 120px;
-    font-size: 13px;
-    color:#666666;
+      margin-top: 120px;
+      font-size: 13px;
+      color:#666666;
+      position: absolute;
+  }
+  
+  .wallet__character{
+    font-size: 32px;
+    font-weight: 600;
+  }
+  .wallet__letter{
+    font-size: 14px;
+    font-weight: 400;
+  }
+  .tel__container{
+    /* background-color: red; */
     position: absolute;
-}
-
-.login__icon{
-    position: absolute;
-    margin-left: 27.5px;
-    margin-top: 79px;
-    width: 31px;
-    height: 31px;
-    /* background-color: #000; */
-    background: url('../../assets/login.png') no-repeat;
-    background-size: contain;
-}
-.tel__container{
+    margin-left: 11px;
+    margin-top: 198px;
+    width: 353px;
+    height: 55px;
+    border-radius: 27.5px;
+  }
+  .verification__container{
     /* background-color: red; */
     position: absolute;
     margin-left: 11px;
@@ -64,35 +69,26 @@
     width: 353px;
     height: 55px;
     border-radius: 27.5px;
-}
-.verification__container{
-    /* background-color: red; */
-    position: absolute;
-    margin-left: 11px;
-    margin-top: 264px;
-    width: 353px;
-    height: 55px;
-    border-radius: 27.5px;
-}
-.submit__botton{
+  }
+  .submit__botton{
     position: absolute;
     height: 44px;
-    width: 353px;
-    margin-top:375px;
-    margin-left:11px;
-    background-image: linear-gradient(to right, #ffbc3b 0,#ffa632 100%);
-    border-radius: 5px;
-    padding-top:13.5px;
-    box-sizing: border-box;
-    color:#fff;
-    font-size: 18px;
-    text-align: center;
-    font-weight: 100 !important; 
-}
-.submit__botton:active{
+      width: 353px;
+      margin-top:375px;
+      margin-left:11px;
+      background-image: linear-gradient(to right, #ffbc3b 0,#ffa632 100%);
+      border-radius: 5px;
+      padding-top:13.5px;
+      box-sizing: border-box;
+      color:#fff;
+      font-size: 18px;
+      text-align: center;
+      font-weight: 100 !important;   
+  }
+  .submit__botton:active{
     background-image: linear-gradient(to right, #f29d23 0,#ed7819 100%);
-}
-.registration__text{
+  }
+  .login__text{
     /* background-color: red; */
     position: absolute;
     margin-top: 432px;
@@ -102,8 +98,8 @@
     color:#2774e8;
     text-decoration-line: underline;
     font-size: 14px;
-}
-.logo__container{
+  }
+  .logo__container{
     /* background-color: red; */
     position: absolute;
     margin-left: 117.5px;
@@ -112,22 +108,23 @@
     height: 41px;
     background-size: 140.5px 41px;
     background-image: url('../../assets/dada_logo.png');
-}
-.verification__button{
+  }
+  .verification__button{
     position: absolute;
-    margin-left: 274.5px;
-    margin-top: 284.5px;
-    /* width: 99px;
-    height: 38px;
-    border-radius: 19px;
-    padding-top: 11px; */
-    text-align: center;
-    font-size: 14px;
-    color: #ffa833;
-    /* border:1px solid #2774e8; */
-    box-sizing: border-box;
-}
-.verification__sent{
+      margin-left: 274.5px;
+      margin-top: 284.5px;
+      /* width: 99px;
+      height: 38px;
+      border-radius: 19px;
+      padding-top: 11px; */
+      text-align: center;
+      font-size: 14px;
+      color: #ffa833;
+      /* border:1px solid #2774e8; */
+      box-sizing: border-box;
+  }
+  
+  .verification__sent{
     position: absolute;
     margin-left: 254px;
     margin-top: 272.5px;
@@ -144,16 +141,10 @@
   
   .error__text{
     position: absolute;
-    margin-left: 137.5px;
+    width: 100%;
+    text-align: center;
     margin-top: 330px;
     font-size: 14px;
     color: #f2112d;
-  }
-  .error__icon{
-    position: absolute;
-    width: 16px;
-    height: 16px;
-    margin-top: 328.5px;
-    margin-left: 112.5px;
-    background-color: #f2112d;
+  
   }

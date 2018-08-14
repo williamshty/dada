@@ -9,6 +9,11 @@ export async function registerNewUser(payload) {
     return resp
 }
 
+export async function verifyPhoneNum(phoneNum) {
+    let resp = await axios.get('/user/phone/verify?phoneNum='+phoneNum)
+    return resp
+}
+
 export async function getRegistrationVerificationCode(phoneNum) {
     let resp = await axios.get('/user/verification/register?phoneNum='+phoneNum)
     return resp

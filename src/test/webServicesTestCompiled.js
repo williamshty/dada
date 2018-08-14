@@ -20,12 +20,17 @@ async function registerUserByPhoneNum(payload) {
   var registrationStatus = await (0, _webServices.registerNewUser)(payload);
   console.log(registrationStatus);
 }
+async function verifyPhoneNumFunction(phoneNum) {
+  var verify_result = await (0, _webServices.verifyPhoneNum)(phoneNum);
+  console.log(verify_result);
+}
 
-registerUserByPhoneNum({
-  user: {
-    phoneNum: 13840243280
-  }
-});
+// verifyPhoneNumFunction('13840243281')
+// registerUserByPhoneNum({
+//   user: {
+//     phoneNum: 13840243280
+//   }
+// });
 
 // passed
 // generateBaiduCoords({
@@ -34,11 +39,11 @@ registerUserByPhoneNum({
 // })
 
 // passed
-// getLoginVerificationCodeFunction('13840243280')
+getLoginVerificationCodeFunction('13840243280');
 // passed
 // generateOrderFunction({
 //   ride: {
-//     passenger: "5b52dd00b8703c0f37bb118f",
+//     passenger: "5b6d9d5af971e43547fe1a38",
 //     location: {
 //       from: {
 //         title: "ABC",
@@ -58,6 +63,7 @@ registerUserByPhoneNum({
 //     },
 //     pax: 2,
 //     distance: 3.4,
-//     price: 2.08
+//     price: 2.08,
+//     duration:'34 Min'
 //   }
 // });

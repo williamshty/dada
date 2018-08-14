@@ -180,6 +180,9 @@ to {top:0px;}
     text-align: center;
     font-weight: 100 !important; 
 }
+.bottom__rider__submit:active{
+    background-image: linear-gradient(to right, #f29d23 0,#ed7819 100%);
+}
 .divider__price{
     height: 1px;
     margin-left: 2.93333%;

@@ -74,6 +74,6 @@ HistoryPage.propTypes = {
 };
 function mapStateToProps(state) {
     return state
-  }
+}
 
 export default connect(mapStateToProps)(HistoryPage);

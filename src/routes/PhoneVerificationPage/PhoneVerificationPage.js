@@ -3,7 +3,7 @@ import { connect } from 'dva';
 import styles from './PhoneVerificationPage.css';
 import InputItem from '../../components/Forms/InputItem'
 import {routerRedux} from 'dva/router';
-import {getLoginVerificationCode} from '../../utils/webServices'
+import {getLoginVerificationCode,verifyPhoneNum} from '../../utils/webServices'
 class PhoneVerificationPage extends React.Component {
   constructor(props) {
     super(props);
@@ -30,56 +30,20 @@ class PhoneVerificationPage extends React.Component {
       })
     }
   }
-  async loadLoginVerificationCode(){
-      if(this.state.tel.toString().length!==11) {
-          this.setState({phoneError:'true'})
-          return
-        }
-    const verification_code = await getLoginVerificationCode(this.state.tel)
-    console.log(verification_code)
-    if(verification_code.data.code!==1001&&verification_code.data.code!==1002){
-      this.setState({phoneError:'true'})
-          return
-    } else if(verification_code.data.code===1002){
-      this.setState({
-        phoneError:'true',
-        phoneNotRegistered:true
-      })
-          return
+  async verifyPhoneNumFunction(phoneNum) {
+    console.log(phoneNum)
+    const verify_result = await verifyPhoneNum(phoneNum)
+    console.log(verify_result)
+    if(verify_result.data.data){
+      localStorage.setItem('phoneNum',phoneNum)
+      this.props.dispatch(routerRedux.push({pathname:'/login'}))
+    } else{
+      localStorage.setItem('phoneNum',phoneNum)
+      this.props.dispatch(routerRedux.push({pathname:'/register'}))
     }
-    else{
-      this.setState({
-        verificationSent:true,
-        phoneNotRegistered:false,
-        receivedVerification:verification_code.data.data.code
-      })
-      this.triggerCountDownTimer()
-    }
-  }
-  countDown(){
-    this.setState({countDownTime:this.state.countDownTime-1})
-  }
-  triggerCountDownTimer(){
-    this.interval = setInterval(()=>{this.countDown()},1000)
-  }
-  triggerClearInterval(){
-    clearInterval(this.interval)
   }
   submitLoginForm(){
-    
-    if(this.state.enteredVerification!==this.state.receivedVerification||this.state.enteredVerification===''){
-      this.setState({verificationError:'true'})
-      return
-    } else{
-      this.props.dispatch({
-        type:'navigator/save',
-        payload:{
-          isLoggedIn:true
-        }
-      })
-      localStorage.setItem('isLoggedIn',true)
-      this.props.dispatch(routerRedux.push({pathname:'/'}))
-    }
+    this.verifyPhoneNumFunction(this.state.tel)
   }
   componentDidMount(){
     // console.log(this.props)
@@ -105,11 +69,10 @@ class PhoneVerificationPage extends React.Component {
             </div> */}
             <div className={styles.verification__container}>
                 <InputItem
-                error={this.state.verificationError}
                 caption='手机号'
                 placeholder='188 0000 0000'
-                value={this.state.verificationEntered}
-                onChange={(v)=>{this.setState({enteredVerification:v})}}/>
+                value={this.state.tel}
+                onChange={(v)=>{this.setState({tel:v})}}/>
             </div>
 
             {/* {(()=>{
@@ -125,17 +88,6 @@ class PhoneVerificationPage extends React.Component {
                 </div>
               )
             })()} */}
-            {(()=>{
-            if(this.state.verificationError==='true'){return (
-                <div>
-                <div className={styles.error__icon}>
-                </div>
-                <div className={styles.error__text}>
-                  验证码输入错误
-                </div>`
-                </div>
-              )}
-            })()}
             <div className={styles.registration__text} onClick={()=>{
               this.props.dispatch(routerRedux.push({pathname:'/registration'}))
               }}>

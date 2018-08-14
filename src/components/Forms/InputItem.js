@@ -1,10 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import styles from './InputItem.css'
-// 通过自定义 moneyKeyboardWrapProps 修复虚拟键盘滚动穿透问题
-// https://github.com/ant-design/ant-design-mobile/issues/307
-// https://github.com/ant-design/ant-design-mobile/issues/163
-
 class InputItem extends React.Component {
   constructor(props){
     super(props);
@@ -63,6 +59,7 @@ class InputItem extends React.Component {
                 })
             }}
             placeholder={this.state.enteredPlaceholder}
+            type={this.props.type}
             />
         </div>
       )

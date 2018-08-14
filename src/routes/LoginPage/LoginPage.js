@@ -6,7 +6,7 @@ import {routerRedux} from 'dva/router';
 import {getLoginVerificationCode} from '../../utils/webServices'
 import SearchItem from '../../components/Forms/SearchItem'
 import SearchListItem from '../../components/SearchListItem/SearchListItem'
-import CustomModal from '../../components/Modals/CustomModal'
+import Toast from '../../components/Toast/Toast'
 class LoginPage extends React.Component {
   constructor(props) {
     super(props);
@@ -18,10 +18,16 @@ class LoginPage extends React.Component {
         verificationSent:false,
         verificationError:'',
         countDownTime:60,
-        phoneNotRegistered:false
+        phoneNotRegistered:false,
+        error_occur:false
     }
   }
   componentDidUpdate(){
+    if(this.state.error_occur){
+      setTimeout(()=>{
+        this.setState({error_occur:false})
+      },2000)
+    }
     if(this.state.verificationSent&&this.state.phoneError==='true'){
       this.setState({phoneError:''})
     }
@@ -34,11 +40,7 @@ class LoginPage extends React.Component {
     }
   }
   async loadLoginVerificationCode(){
-      if(this.state.tel.toString().length!==11) {
-          this.setState({phoneError:'true'})
-          return
-        }
-    const verification_code = await getLoginVerificationCode(this.state.tel)
+    const verification_code = await getLoginVerificationCode(localStorage.getItem('phoneNum'))
     console.log(verification_code)
     if(verification_code.data.code!==1001&&verification_code.data.code!==1002){
       this.setState({phoneError:'true'})
@@ -71,7 +73,7 @@ class LoginPage extends React.Component {
   submitLoginForm(){
     
     if(this.state.enteredVerification!==this.state.receivedVerification||this.state.enteredVerification===''){
-      this.setState({verificationError:'true'})
+      this.setState({error_occur:true})
       return
     } else{
       this.props.dispatch({
@@ -90,6 +92,13 @@ class LoginPage extends React.Component {
     render(){
       return (
         <div className={styles.base__container}>
+        {(()=>{
+          if(this.state.error_occur){
+            return(
+              <Toast text="验证码错误"/>
+            )
+          }
+          })()}
         <div className={styles.status__bar__filler}></div>
             <div className={styles.back__button}></div>
             <div className={styles.login__icon}></div>
@@ -109,7 +118,6 @@ class LoginPage extends React.Component {
             </div> */}
             <div className={styles.verification__container}>
                 <InputItem
-                error={this.state.verificationError}
                 caption='验证码'
                 placeholder=''
                 value={this.state.verificationEntered}
@@ -150,6 +158,11 @@ class LoginPage extends React.Component {
         
       )
     }
+    // render(){
+    //   return(
+    //     <Toast text="有拼单用户加入行程"/>
+    //   )
+    // }
 }
 LoginPage.propTypes = {
 };

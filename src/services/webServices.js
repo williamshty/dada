@@ -4,9 +4,14 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 exports.registerNewUser = registerNewUser;
+exports.verifyPhoneNum = verifyPhoneNum;
 exports.getRegistrationVerificationCode = getRegistrationVerificationCode;
 exports.getLoginVerificationCode = getLoginVerificationCode;
 exports.generateOrder = generateOrder;
+exports.cancelOrderBeforeTaken = cancelOrderBeforeTaken;
+exports.cancelOrderAfterTaken = cancelOrderAfterTaken;
+exports.confirmTripEnd = confirmTripEnd;
+exports.rateTrip = rateTrip;
 
 var _axios = require('axios');
 
@@ -24,6 +29,11 @@ async function registerNewUser(payload) {
     return resp;
 }
 
+async function verifyPhoneNum(phoneNum) {
+    var resp = await _axios2.default.get('/user/phone/verify?phoneNum=' + phoneNum);
+    return resp;
+}
+
 async function getRegistrationVerificationCode(phoneNum) {
     var resp = await _axios2.default.get('/user/verification/register?phoneNum=' + phoneNum);
     return resp;
@@ -36,5 +46,22 @@ async function getLoginVerificationCode(phoneNum) {
 
 async function generateOrder(payload) {
     var resp = await _axios2.default.post('/ride', payload);
+    return resp;
+}
+
+async function cancelOrderBeforeTaken(payload) {
+    var resp = await _axios2.default.put('/ride/cancel/6', payload);
+    return resp;
+}
+async function cancelOrderAfterTaken(payload) {
+    var resp = await _axios2.default.put('/ride/cancel/7', payload);
+    return resp;
+}
+async function confirmTripEnd(payload) {
+    var resp = await _axios2.default.put('/ride/confirm', payload);
+    return resp;
+}
+async function rateTrip(payload) {
+    var resp = await _axios2.default.put('/ride/review', payload);
     return resp;
 }
