@@ -48,8 +48,8 @@
     height: 32px;
     position: absolute;
     background-color: #000;
-    /* background: url('../../assets/call_driver.png') no-repeat;
-    background-size: contain; */
+    background: url('../../assets/driver_found.png') no-repeat;
+    background-size: contain;
 }
 .bottom__brand__title{
     position: absolute;

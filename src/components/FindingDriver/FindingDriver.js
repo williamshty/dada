@@ -30,7 +30,7 @@ class FindingDriver extends React.Component {
             orderGenerationTriggered: true
           }
         });
-      }, 600);
+      }, 1600);
     }
   }
   componentWillUnmount() {

@@ -9,7 +9,7 @@ class WalletDisplayPage extends React.Component {
   }
   componentWillMount(){
       if(!localStorage.getItem('address')){
-        this.props.dispatch(routerRedux.push({ pathname: "/generate " }));
+        this.props.dispatch(routerRedux.push({ pathname: "/generate" }));
       }
   }
   render() {

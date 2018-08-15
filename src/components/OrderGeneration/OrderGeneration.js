@@ -13,6 +13,7 @@ import { generateOrder } from "../../utils/webServices";
 import OrderPriceForm from "../Forms/OrderPriceForm";
 import SearchItem from "../Forms/SearchItem";
 import SearchListItem from "../SearchListItem/SearchListItem";
+import Toast from "../../components/Toast/Toast";
 // import pile from 'pile-ui'
 const Item = List.Item;
 const Brief = Item.Brief;
@@ -33,7 +34,8 @@ class OrderGeneration extends React.Component {
       estimatedPrice: 0,
       routeShouldUpdate: true,
       riderNumber: 0,
-      paxSelected: this.props.trip.pax
+      paxSelected: this.props.trip.pax,
+      error_occur:false
     };
   }
   componentDidMount() {
@@ -45,16 +47,35 @@ class OrderGeneration extends React.Component {
       }
     });
   }
-  componentDidUpdate() {}
+  componentDidUpdate() {
+    if (this.state.error_occur) {
+      setTimeout(() => {
+        this.setState({ error_occur: false });
+      }, 2000);
+    }
+  }
   async generateOrderFunction(payload) {
     const orderGenerated = await generateOrder(payload);
-    console.log(orderGenerated.data.data._id);
-    this.props.dispatch({
-      type:'trip/save',
-      payload:{
-        currentTripID:orderGenerated.data.data._id
-      }
-    })
+    console.log(orderGenerated);
+    if(orderGenerated.data.code===3002){
+      this.setState({error_occur:true})
+      return
+    }
+    else{
+      this.props.dispatch({
+        type:'trip/save',
+        payload:{
+          currentTripID:orderGenerated.data.data._id
+        }
+      })
+      this.props.dispatch({
+        type: "navigator/save",
+        payload: {
+          orderGenerationTriggered: false,
+          findingDriverTriggered: true
+        }
+      })
+    }
   }
   async loadLocationByCoordinate(coordinate) {
     const result = await searchLocationByCoordinate(coordinate);
@@ -132,6 +153,11 @@ class OrderGeneration extends React.Component {
   render() {
     return (
       <div>
+        {(() => {
+          if (this.state.error_occur) {
+            return <Toast text="目前无可用车辆" />;
+          }
+        })()}
         <div className={styles.top__container}>
           <div
             className={styles.back__arrow}
@@ -358,13 +384,6 @@ class OrderGeneration extends React.Component {
                                 wallet:localStorage.getItem('walletID')
                               }
                         })
-                        this.props.dispatch({
-                            type: "navigator/save",
-                            payload: {
-                              orderGenerationTriggered: false,
-                              findingDriverTriggered: true
-                            }
-                          })
                         
                       }
                       

@@ -38,8 +38,8 @@
     height: 32.5px;
     position: absolute;
     background-color: #000;
-    /* background: url('../../assets/call_driver.png') no-repeat;
-    background-size: contain; */
+    background: url('../../assets/in_trip.png') no-repeat;
+    background-size: contain;
 }
 .bottom__distance__title{
     position: absolute;

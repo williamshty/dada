@@ -168,18 +168,17 @@ to {top:0px;}
 }
 .driver__text{
     position: absolute;
-    margin-left: 58.5px;
-    margin-top: 51px;
-    font-size: 13px;
-    font-weight: 400;
-}
-.driver__text:active{
     padding-left: 58.5px;
     margin-left: 0px;
     margin-top: 35.5px;
     padding-top: 15.5px;
     width: 232px;
     height: 31px;
+    font-size: 13px;
+    font-weight: 400;
+}
+.driver__text:active{
+    
     background-color: rgba(0, 0, 0,0.15);
 }
 .history__icon{
@@ -193,18 +192,17 @@ to {top:0px;}
 }
 .history__text{
     position: absolute;
-    margin-left: 58.5px;
-    margin-top: 96px;
-    font-size: 13px;
-    font-weight: 400;
-}
-.history__text:active{
     padding-left: 58.5px;
     margin-left: 0px;
     margin-top: 80.5px;
     padding-top: 15.5px;
     width: 232px;
     height: 31px;
+    font-size: 13px;
+    font-weight: 400;
+}
+.history__text:active{
+    
     background-color: rgba(0, 0, 0,0.15);
 }
 .wallet__icon{
@@ -218,18 +216,17 @@ to {top:0px;}
 }
 .wallet__text{
     position: absolute;
-    margin-left: 58.5px;
-    margin-top: 141px;
-    font-size: 13px;
-    font-weight: 400;
-}
-.wallet__text:active{
     padding-left: 58.5px;
     margin-left: 0px;
     margin-top: 125.5px;
     padding-top: 15.5px;
     width: 232px;
     height: 31px;
+    font-size: 13px;
+    font-weight: 400;
+}
+.wallet__text:active{
+    
     background-color: rgba(0, 0, 0,0.15);
 }
 .privacy__icon{
@@ -243,18 +240,17 @@ to {top:0px;}
 }
 .privacy__text{
     position: absolute;
-    margin-left: 58.5px;
-    margin-top: 186px;
-    font-size: 13px;
-    font-weight: 400;
-}
-.privacy__text:active{
     padding-left: 58.5px;
     margin-left: 0px;
     margin-top: 170.5px;
     padding-top: 15.5px;
     width: 232px;
     height: 31px;
+    font-size: 13px;
+    font-weight: 400;
+}
+.privacy__text:active{
+    
     background-color: rgba(0, 0, 0,0.15);
 }
 .about__icon{
@@ -268,18 +264,16 @@ to {top:0px;}
 }
 .about__text{
     position: absolute;
-    margin-left: 58.5px;
-    margin-top: 231px;
-    font-size: 13px;
-    font-weight: 400;
-}
-.about__text:active{
     padding-left: 58.5px;
     margin-left: 0px;
     margin-top: 215.5px;
     padding-top: 15.5px;
     width: 232px;
     height: 31px;
+    font-size: 13px;
+    font-weight: 400;
+}
+.about__text:active{
     background-color: rgba(0, 0, 0,0.15);
 }
 .exit__icon{
@@ -293,18 +287,16 @@ to {top:0px;}
 }
 .exit__text{
     position: absolute;
-    margin-left: 58.5px;
-    margin-top: 294.5px;
-    font-size: 13px;
-    font-weight: 400;
-}
-.exit__text:active{
     padding-left: 58.5px;
     margin-left: 0px;
     margin-top: 279px;
     padding-top: 15.5px;
     width: 232px;
     height: 31px;
+    font-size: 13px;
+    font-weight: 400;
+}
+.exit__text:active{
     background-color: rgba(0, 0, 0,0.15);
 }
 .side__avatar{

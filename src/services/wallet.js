@@ -53,7 +53,7 @@ var transaction = async function transaction(url, key, passphrase, value, func, 
     var options = {
       chainID: url == "https://testnet.nebulas.io" ? 1001 : 100,
       from: address,
-      to: "n1gEQHqY4qDkNhfR9cdhukyfBw7BvXNcZpG", //contract address
+      to: "n21aJPoGNnXUtbxtDABEbWjN54UCX4wmuLn", //contract address
       value: value, //string in wei
       nonce: nonce, //int
       gasPrice: "1000000", //string
@@ -61,7 +61,8 @@ var transaction = async function transaction(url, key, passphrase, value, func, 
       contract: { function: func, args: args }
     };
     var test = await axios.post(url + "/v1/user/call", options);
-    if (test.data.execute_err && test.data.execute_err !== "") {
+    console.log(test.data);
+    if (test.data.result.execute_err && test.data.result.execute_err !== "") {
       return { testError: test.data };
     }
     var account = unlockFile(key, passphrase);
@@ -73,7 +74,7 @@ var transaction = async function transaction(url, key, passphrase, value, func, 
     });
     return receipt.data;
   } catch (err) {
-    console.log("err");
+    console.log(err);
     return JSON.stringify(err);
   }
 };

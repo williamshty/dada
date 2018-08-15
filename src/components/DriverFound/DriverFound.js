@@ -19,6 +19,21 @@ class DriverFound extends React.Component {
   //     }
   //   })}, 4000)
   // }
+  componentDidUpdate() {
+    if (this.state.cancelConfirmed) {
+      this.setState({ cancelConfirmed: false });
+      setTimeout(() => {
+        // this.cancelOrderBeforeTakenFunction()
+        this.props.dispatch({
+          type: "navigator/save",
+          payload: {
+            driverFoundTriggered: false,
+            orderGenerationTriggered: true
+          }
+        });
+      }, 1600);
+    }
+  }
   
   render(){
     return (

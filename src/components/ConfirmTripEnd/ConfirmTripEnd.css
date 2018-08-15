@@ -136,10 +136,10 @@
     width:32px;
     height: 32px;
     position: absolute;
-    background-color: #000;
-    /* background-image: url();
+    /* background-color: #000; */
+    background-image: url('../../assets/trip_finished.png');
     background-size: contain;
-    background-repeat: no-repeat; */
+    background-repeat: no-repeat;
 }
 .button__contact{
     position: absolute;

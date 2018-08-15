@@ -56,6 +56,7 @@ class RootRegistrationPage extends React.Component {
         verificationSent: true,
         receivedVerification: verification_code.data.data.code
       });
+      localStorage.setItem('passengerID',verification_code.data.data.user._id)
       this.triggerCountDownTimer();
     }
   }
@@ -94,6 +95,7 @@ class RootRegistrationPage extends React.Component {
       }
     });
     localStorage.setItem("isLoggedIn", true);
+    // localStorage.setItem("passengerID", )
     this.props.dispatch(routerRedux.push({ pathname: "/" }));
   }
   componentDidMount() {
@@ -112,7 +114,14 @@ class RootRegistrationPage extends React.Component {
             return <Toast text="验证码错误" />;
           }
         })()}
-        <div className={styles.back__button} />
+        <div
+          className={styles.back__button}
+          onClick={()=>{
+            this.props.dispatch(
+              routerRedux.push({ pathname: "/verification" })
+            )
+          }}
+        />
         <div className={styles.registration__icon} />
         <div className={styles.registration__text}>注册</div>
         <div className={styles.registration__hint__text}>

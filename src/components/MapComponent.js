@@ -4,7 +4,7 @@ import { connect } from 'dva';
 import {mapStyle} from '../utils/mapStyle'
 import loadPosition from '../utils/locater'
 import {searchLocation} from '../utils/baiduQuery'
-import {Map, DrivingRoute,Marker, NavigationControl, InfoWindow, TrafficLayer} from 'react-bmap'
+import {Map, DrivingRoute,Marker, NavigationControl, InfoWindow, TrafficLayer, BMap} from 'react-bmap'
 class MapComponent extends React.Component {
   constructor(props) {
     super(props);
@@ -22,6 +22,7 @@ class MapComponent extends React.Component {
   componentDidMount() {
     // this.loadSearchedLocation.bind(this)('牛市口')
     loadPosition(this.props.dispatch)
+    // Map.zoom(18);  
     // Map.centerAndZoom()
     // console.log(this.props.mapData)
     // this.props.mapData.dispatch({type:'navigator/toggleOrderGeneration'})

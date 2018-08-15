@@ -8,7 +8,7 @@ export async function searchLocation(param){
 }
 
 export async function searchLocationByCoordinate(location){
-    let resp = await fetchJSONP(`http://api.map.baidu.com/geocoder/v2/?callback=renderReverse&location=${location.lat},${location.lng}&output=json&pois=0&ak=YC8DWemOR8iZ12lUX7b63XAGWbNSgqmI`);
+    let resp = await fetchJSONP(`https://api.map.baidu.com/geocoder/v2/?callback=renderReverse&location=${location.lat},${location.lng}&output=json&pois=0&ak=YC8DWemOR8iZ12lUX7b63XAGWbNSgqmI`);
     // return JSON.parse(resp.data.slice(29,resp.data.length-1)).result.formatted_address
     return resp.json()
 }
