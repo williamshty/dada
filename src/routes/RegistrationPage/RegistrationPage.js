@@ -47,7 +47,7 @@ class RegistrationPage extends React.Component {
         verificationSent: true,
         receivedVerification: verification_code.data.data.code
       });
-      localStorage.setItem('passengerID',verification_code.data.data.user._id)
+      
       this.triggerCountDownTimer();
     }
   }
@@ -86,6 +86,7 @@ class RegistrationPage extends React.Component {
       }
     });
     localStorage.setItem("isLoggedIn", true);
+    localStorage.setItem('passengerID',registrationStatus.data.data._id)
     this.props.dispatch(routerRedux.push({ pathname: "/" }));
   }
   componentDidMount() {

@@ -13,6 +13,9 @@ import HistoryPage from "./routes/HistoryPage/HistoryPage";
 import RootRegistrationPage from "./routes/RootRegistrationPage/RootRegistrationPage";
 import WalletGenerationPage from "./routes/WalletGenerationPage/WalletGenerationPage";
 import WalletDisplayPage from "./routes/WalletDisplayPage/WalletDisplayPage";
+import PrivacyPage from './routes/PrivacyPage/PrivacyPage'
+import DriverPage from './routes/DriverPage/DriverPage'
+import AboutPage from './routes/AboutPage/AboutPage'
 import TweenOne from 'rc-tween-one';
 import QueueAnim from 'rc-queue-anim';
 var TweenOneGroup = TweenOne.TweenOneGroup;
@@ -39,7 +42,7 @@ function RouterConfig({ history }) {
             <TweenOneGroup
               appear={false}
               leave={{ x: -375, opacity: 1 }}
-              yoyo={true}
+              yoyo="true"
               duration={1000}
             >
               <div key={key} id={key}>
@@ -56,6 +59,9 @@ function RouterConfig({ history }) {
                     path="/registration"
                     component={RootRegistrationPage}
                   />
+                  <Route path="/privacy" component={PrivacyPage} />
+                  <Route path="/driver" component={DriverPage} />
+                  <Route path="/about" component={AboutPage} />
                   <Route path="/generate" component={WalletGenerationPage} />
                   <Route path="/display" component={WalletDisplayPage} />
                 </Switch>

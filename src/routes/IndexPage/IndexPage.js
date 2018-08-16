@@ -23,8 +23,11 @@ class IndexPage extends React.Component {
     super(props);
   }
   componentWillMount() {
+    if(!localStorage.getItem('passengerID')){
+      this.props.dispatch(routerRedux.push({ pathname: "/verification" }));
+    }
     // localStorage.setItem("passengerID", "5b6d9d5af971e43547fe1a38");
-    localStorage.setItem("walletID", "n1JqnCs7izSsRAuEz1jD8ZV2YP5cW9oCSi6");
+    // localStorage.setItem("walletID", "n1JqnCs7izSsRAuEz1jD8ZV2YP5cW9oCSi6");
     connectSocket();
     orderAccepted((err, orderAccepted) => {
       this.props.dispatch({

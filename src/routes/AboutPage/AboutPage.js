@@ -1,8 +1,8 @@
 import React from 'react';
 import { connect } from 'dva';
-import styles from './PrivacyPage.css';
+import styles from './AboutPage.css';
 import { routerRedux } from "dva/router";
-class PrivacyPage extends React.Component {
+class AboutPage extends React.Component {
   render(){
     return (
       <div className={styles.normal}>
@@ -19,9 +19,9 @@ class PrivacyPage extends React.Component {
   }
 }
 
-PrivacyPage.propTypes = {
+AboutPage.propTypes = {
 };
 function mapStateToProps(state) {
   return state;
 }
-export default connect(mapStateToProps)(PrivacyPage);
+export default connect(mapStateToProps)(AboutPage);

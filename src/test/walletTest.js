@@ -81,8 +81,11 @@ async function submitTransaction(type,order_id,price) {
     args
   );
 }
+
+
+
 // submitTransaction('order',11111,'10000');
-submitTransaction('cancel',11111,'11111');
+// submitTransaction('cancel',11111,'11111');
 // genarateWallet("Aa458545147");
 // getCurrentWalletState({
 //     url:'https://testnet.nebulas.io',

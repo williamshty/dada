@@ -41,6 +41,7 @@ class RootRegistrationPage extends React.Component {
     }
   }
   async getRegistrationVerificationCode() {
+    localStorage.setItem("phoneNum", this.state.tel)
     if (this.state.tel.toString().length !== 11) {
       this.setState({ phoneError: true });
       return;
@@ -56,7 +57,6 @@ class RootRegistrationPage extends React.Component {
         verificationSent: true,
         receivedVerification: verification_code.data.data.code
       });
-      localStorage.setItem('passengerID',verification_code.data.data.user._id)
       this.triggerCountDownTimer();
     }
   }
@@ -96,6 +96,7 @@ class RootRegistrationPage extends React.Component {
     });
     localStorage.setItem("isLoggedIn", true);
     // localStorage.setItem("passengerID", )
+    localStorage.setItem('passengerID',registrationStatus.data.data._id)
     this.props.dispatch(routerRedux.push({ pathname: "/" }));
   }
   componentDidMount() {

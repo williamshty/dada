@@ -6,15 +6,16 @@
   }
   .back__button{
     position: absolute;
-    margin-left: 18px;
-    margin-top: 32px;
-    width: 8px;
-    height: 15px;
-    background: url('../../assets/backArrow.png');
-    background-size: contain;
-  
+    margin-left: 9.5px;
+    margin-top: 26px;
+    width: 27px;
+    height: 27px;
+    border-radius: 13.5px;
     /* background-color: #000; */
-  }
+}
+.back__button:active{
+    background-color: rgba(0,0,0,0.15);
+}
   .wallet__text{
     /* background-color: red; */
     position: absolute;

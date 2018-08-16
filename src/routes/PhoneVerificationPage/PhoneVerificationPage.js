@@ -70,7 +70,7 @@ class PhoneVerificationPage extends React.Component {
             <div className={styles.verification__container}>
                 <InputItem
                 caption='手机号'
-                placeholder='188 0000 0000'
+                placeholder=''
                 value={this.state.tel}
                 onChange={(v)=>{this.setState({tel:v})}}/>
             </div>
